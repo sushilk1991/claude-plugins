@@ -1,0 +1,17 @@
+{
+  "name": "masonry",
+  "displayName": "Masonry",
+  "version": "1.0.0",
+  "description": "Generate product photos, Studio product shoots and short videos in your Masonry workspace, and browse what you made. Signs in through masonry.so on first use.",
+  "author": {
+    "name": "Masonry",
+    "email": "support@masonry.so",
+    "url": "https://masonry.so"
+  },
+  "homepage": "https://masonry.so",
+  "keywords": ["images", "video", "product-photography", "ecommerce", "mcp"],
+  "icon": "./assets/icon.png",
+  "supportUrl": "https://masonry.so/support",
+  "privacyPolicyUrl": "https://masonry.so/legal/privacy",
+  "termsOfServiceUrl": "https://masonry.so/legal/terms"
+}

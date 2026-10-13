@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "masonry": {
+      "type": "http",
+      "url": "https://masonry.so/mcp"
+    }
+  }
+}
