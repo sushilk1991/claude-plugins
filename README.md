@@ -1,16 +1,13 @@
 # Masonry for Claude Code
 
 ```
-/plugin marketplace add masonry-so/claude-plugins
+/plugin marketplace add sushilk1991/claude-plugins
 /plugin install masonry@masonry
 ```
 
 Run both inside Claude Code. The first call to a Masonry tool opens
 masonry.so in the browser: choose a workspace, select Allow, and you stay
 connected until you disconnect in Masonry under Settings, Connected apps.
-
-`masonry-so/claude-plugins` is the proposed GitHub location. If the repository
-lives elsewhere, use that `owner/repo` in the first command.
 
 ## What you get
 
