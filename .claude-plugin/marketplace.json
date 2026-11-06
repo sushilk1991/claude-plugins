@@ -1,6 +1,6 @@
 {
   "name": "masonry",
-  "description": "Masonry plugins for Claude Code: product photos and short videos in your own Masonry workspace.",
+  "description": "Masonry plugins for Claude Code: videos, product photos and music in your own Masonry workspace.",
   "owner": {
     "name": "Masonry",
     "email": "support@masonry.so",
@@ -10,7 +10,7 @@
     {
       "name": "masonry",
       "source": "./plugins/masonry",
-      "description": "Generate product photos, Studio product shoots and short videos in your Masonry workspace, and browse what you made.",
+      "description": "Make videos, product photos, voiceovers and music in your Masonry workspace, and join scenes into one finished video.",
       "category": "creativity",
       "tags": ["images", "video", "product-photography", "ecommerce", "mcp"]
     }
