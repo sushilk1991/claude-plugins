@@ -1,46 +1,48 @@
-# Masonry for Claude Code
+# Masonry plugins
+
+Masonry for coding agents and AI apps: make videos, product photos,
+voiceovers and music in your own Masonry workspace from the app you already
+use. One server, `https://masonry.so/mcp`, with sign-in on masonry.so the first time a tool
+runs.
+
+## Claude Code
 
 ```
 /plugin marketplace add sushilk1991/claude-plugins
 /plugin install masonry@masonry
 ```
 
-Run both inside Claude Code. The first call to a Masonry tool opens
-masonry.so in the browser: choose a workspace, select Allow, and you stay
-connected until you disconnect in Masonry under Settings, Connected apps.
+## Cursor
 
-## What you get
+Install **Masonry** from the Cursor Marketplace, or add this repository as a
+team marketplace. The plugin adds the server, two skills, a `/masonry`
+command and a rule for saving generated media into your project.
 
-- The Masonry MCP server (`https://masonry.so/mcp`): product photos,
-  variations, Studio product shoots, short videos, remix and upscale, and a
-  gallery of recent creations, all in your own Masonry workspace.
-- Two skills:
-  - `/masonry:get-started`: connect, make a first image, run a first shoot.
-  - `/masonry:product-shoot`: one photo of your product in, four looks to
-    choose from, then a matching set of finished photos.
+## Skills only
 
-Generations use your workspace's credits.
-
-## Already using Masonry in claude.ai?
-
-A custom connector added in claude.ai also appears in Claude Code. With the
-plugin installed too, you have two copies of the same tools; turn one off in
-`/mcp`.
-
-## Develop
+The skills in `plugins/masonry/skills/` work in any agent that reads Agent
+Skills:
 
 ```
-claude plugin validate --strict .
-claude plugin validate --strict ./plugins/masonry
-claude plugin marketplace add ./      # test from this checkout
+gh skill install sushilk1991/claude-plugins --all                         # GitHub CLI, any supported agent
+npx skills add sushilk1991/claude-plugins                                 # skills.sh
+openclaw skills install @masonry/masonry-get-started  # OpenClaw, from ClawHub
+hermes skills install sushilk1991/claude-plugins/plugins/masonry/skills/get-started   # Hermes
 ```
 
-The skills are copies of `masonry-ai-backend/external/mcp/plugin/skills/`,
-which is the source of truth for both this plugin and the ChatGPT/Codex
-plugin. After changing them there, copy them here and check:
+Skills need the Masonry server connected in that app; `get-started` gives
+the one setup step for each app. Every app: https://masonry.so/connect.
 
-```
-python3 <backend>/external/mcp/plugin/scripts/validate.py --claude-marketplace .
-```
+## Layout
+
+| Path | For |
+|---|---|
+| `.claude-plugin/marketplace.json` | Claude Code marketplace |
+| `.cursor-plugin/marketplace.json` | Cursor marketplace |
+| `plugins/masonry/` | The plugin: manifests for both hosts, skills, Cursor command and rule |
+| `hermes/optional-mcps/masonry/` | Entry for Hermes' MCP catalog (submitted upstream) |
+
+This repository is generated from `external/mcp/plugin` in Masonry's backend
+by `scripts/sync_marketplace.py`. Changes made here are overwritten.
 
 Support: support@masonry.so

@@ -1,6 +1,7 @@
 ---
 name: product-shoot
 description: Run a Masonry Studio product shoot. One photo of the person's real product goes in, four looks come back to choose from, then a matching set of finished photos. Use when someone wants photos of their own product for a store, ads or social posts and has, or can share, a photo of it.
+license: MIT
 ---
 
 # Studio product shoot

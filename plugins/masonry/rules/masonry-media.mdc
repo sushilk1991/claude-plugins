@@ -1,0 +1,11 @@
+---
+description: Saving media made with Masonry into this project
+alwaysApply: false
+---
+
+When a Masonry tool returns an image, video or audio file that is meant for
+this project, save it under the folder the project already uses for media
+(for example `public/`, `assets/` or `static/`), with a lowercase, hyphenated
+name that says what it shows. Reference it from code by that path, and keep
+the Masonry link in a comment only when the person asks for provenance. Don't
+commit large videos when the project ignores media in git.

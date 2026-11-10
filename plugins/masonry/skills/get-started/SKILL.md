@@ -1,6 +1,7 @@
 ---
 name: get-started
 description: Set up Masonry, then make a first video or product photo, and a first Studio product shoot. Use right after Masonry is installed, or when someone asks how to start with Masonry, how to connect it, or what it can do.
+license: MIT
 ---
 
 # Get started with Masonry
@@ -19,6 +20,22 @@ Call `get_credits`.
   masonry.so, where they choose a workspace and select Allow. Nothing needs to
   be copied or pasted.
 - It fails for another reason: say what failed and stop.
+- There is no `get_credits` tool: Masonry isn't connected in this app yet.
+  Say so, and give the one setup step for the app they are in. The server is
+  `https://masonry.so/mcp` everywhere, and sign-in happens on masonry.so the
+  first time a tool runs:
+  - Claude Code: `claude mcp add --transport http masonry https://masonry.so/mcp`
+  - Codex: `codex mcp add masonry --url https://masonry.so/mcp`, then
+    `codex mcp login masonry`
+  - Cursor: add `{"mcpServers":{"masonry":{"url":"https://masonry.so/mcp"}}}`
+    to `~/.cursor/mcp.json`
+  - OpenClaw: `openclaw mcp add masonry --url https://masonry.so/mcp --transport streamable-http --auth oauth`,
+    then `openclaw mcp login masonry`
+  - Hermes: `hermes mcp add masonry --url https://masonry.so/mcp --auth oauth`,
+    then `hermes mcp login masonry`
+  - Any other app: see https://masonry.so/connect
+
+  Don't run these commands yourself unless the person asks you to.
 
 ## 2. First video
 
@@ -30,8 +47,26 @@ question, unless they already said.
 2. After they agree, call `generate_video`. Leave `model` out unless they name
    one. To animate a photo they already have, use `animate_image` instead.
 3. For a longer video (an ad, a story, a music video), agree on a few scenes
-   first, generate each one, then join them with `combine_clips`, adding music
-   from `generate_audio` if they want it.
+   first, generate each one, then edit them together with `combine_clips`. It
+   does the whole edit in one call: a narrator (`voiceover`, made with
+   `generate_audio` kind speech), music, sound effects, captions timed to the
+   spoken words, and on-screen text such as a hook or a call to action.
+4. Every result comes back with a `job_id`. Keep each scene's id and pass
+   those ids to `combine_clips` in order. If a result says it is still
+   rendering, call `check_generation` with its id until it is finished, then
+   continue. Send each call once: a slow call is still working, and sending
+   it again does not make it faster.
+5. For shorts from a long video they already have: `add_media` brings in
+   their file (or `read_youtube_video` reads a video link they have the right
+   to use), the transcript shows the strongest moments, and each one becomes
+   a vertical clip (`clip_youtube_video`, or `combine_clips` with
+   `trim_start` and `trim_end`) with captions from clips. When these tools
+   are not listed, ask for the video file instead.
+6. For a title card, kinetic text or an animated chart, write one
+   self-contained HTML page and call `render_motion_graphics`; its job_id
+   works as a clip in `combine_clips`.
+7. To keep the same person or mascot across shots, make one clear image of
+   them, call `save_character`, and pass the name in `characters` afterwards.
 
 ## 3. First image
 
@@ -52,8 +87,9 @@ attachment, an image link, or a product page link). Then follow the
 
 ## 5. What to know
 
-- Everything is saved in the Masonry workspace. `list_creations` shows recent
-  work.
+- Everything is saved in the Masonry workspace. `list_creations` shows what
+  the person made here earlier, for when they ask to see past work. Don't use
+  it to find something you just made: use the `job_id` from that result.
 - Every generation uses the workspace's credits. When a tool reports that the
   workspace is out of credits, pass its message on as written, don't retry,
   and don't add your own suggestion to buy anything.

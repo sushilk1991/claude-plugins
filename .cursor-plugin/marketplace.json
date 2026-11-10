@@ -1,0 +1,17 @@
+{
+  "name": "masonry",
+  "owner": {
+    "name": "Masonry",
+    "email": "support@masonry.so"
+  },
+  "metadata": {
+    "description": "Masonry for Cursor: videos, product photos and music in your own Masonry workspace."
+  },
+  "plugins": [
+    {
+      "name": "masonry",
+      "source": "plugins/masonry",
+      "description": "Videos, product photos, voiceovers and music in your Masonry workspace."
+    }
+  ]
+}

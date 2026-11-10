@@ -1,0 +1,33 @@
+# Nous-approved MCP catalog entry.
+# Presence in this directory = approval. Merged via PR review.
+manifest_version: 1
+
+name: masonry
+description: Make videos, product photos, voiceovers and music in your Masonry workspace.
+source: https://masonry.so/connect
+
+# Official vendor-hosted remote MCP (URL-only; Hermes never spawns a local
+# process for this entry). Native OAuth 2.1 with Dynamic Client Registration
+# and Client ID Metadata Documents: RFC 9728 protected-resource metadata ->
+# authorization server metadata with registration_endpoint, PKCE S256.
+
+transport:
+  type: http
+  url: https://masonry.so/mcp
+
+auth:
+  type: oauth
+
+# Composer-suggestion triggers (desktop brand pills).
+suggest:
+  keywords:
+    - masonry
+    - product photo
+    - video
+  hosts:
+    - masonry.so
+
+post_install: |
+  On first connection Hermes opens a browser to sign in to Masonry (or run
+  `hermes mcp login masonry`). Pick a workspace and select Allow, then
+  restart the session so tools load. Generations use that workspace's credits.

@@ -10,9 +10,15 @@
     {
       "name": "masonry",
       "source": "./plugins/masonry",
-      "description": "Make videos, product photos, voiceovers and music in your Masonry workspace, and join scenes into one finished video.",
+      "description": "Videos, product photos, voiceovers and music in your Masonry workspace.",
       "category": "creativity",
-      "tags": ["images", "video", "product-photography", "ecommerce", "mcp"]
+      "tags": [
+        "images",
+        "video",
+        "product-photography",
+        "ecommerce",
+        "mcp"
+      ]
     }
   ]
 }
